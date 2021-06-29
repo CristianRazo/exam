@@ -169,3 +169,17 @@ app.get("/record", (req, res) => {
 app.listen(3000, (req, res) => {
   console.log("Server Running in http://localhost:3000");
 });
+
+//Mostrar todos los artículos
+app.get("/api/users", (req, res) => {
+  connection.query(
+    "SELECT id,user,country,state,gender  FROM users",
+    (error, filas) => {
+      if (error) {
+        throw error;
+      } else {
+        res.send(filas);
+      }
+    }
+  );
+});
